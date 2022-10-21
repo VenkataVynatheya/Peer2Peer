@@ -4,46 +4,39 @@ import java.io.OutputStream;
 import java.net.Socket;
 
 public class PeerController {
-    private InputStream ip;
-    private OutputStream op;
+    private InputStream input;
+    private OutputStream output;
 
-    private Socket socket=null;
-    private int sessionType;
+    private Socket socket = null;
+    private int typeOfPeerSession;
 
-    String currentpId;
-    PeerController(String pId,Socket s,int sessionType)
-    {
-        this.socket=s;
-        this.sessionType=sessionType;
-        this.currentpId=pId;
-        try
-        {
-            ip=s.getInputStream();
-            op=s.getOutputStream();
-        }
-        catch (IOException e) {
-            Peer2Peer.logger.logDisplay(this.currentpId+" error occurred when trying to get Data.");
+    String currPeerID;
+
+    PeerController(String peerID, Socket socket, int sessionType) {
+        this.socket = socket;
+        this.typeOfPeerSession = sessionType;
+        this.currPeerID = peerID;
+        try {
+            input = socket.getInputStream();
+            output = socket.getOutputStream();
+        } catch (IOException exception) {
+            Peer2Peer.logger.logDisplay("Error while fetching data of Peer: " + this.currPeerID);
         }
     }
-    PeerController(String host,int port,int sessionType,String pId) throws IOException
-    {
-        this.sessionType=sessionType;
-        try
-        {
-            this.currentpId=pId;
-            this.socket=new Socket(host,port);
+
+    PeerController(String host, int portNumber, int sessionType, String peerID) throws IOException {
+        this.typeOfPeerSession = sessionType;
+        try {
+            this.currPeerID = peerID;
+            this.socket = new Socket(host, portNumber);
+        } catch (Exception exception) {
+            Peer2Peer.logger.logDisplay("Error occurred while fetching Peer: " + peerID + " connections.");
         }
-        catch (Exception ex)
-        {
-            Peer2Peer.logger.logDisplay("Error occurred when trying to open a connection with peer "+pId);
-        }
-        try
-        {
-            ip=socket.getInputStream();
-            op=socket.getOutputStream();
-        }
-        catch (IOException e) {
-            Peer2Peer.logger.logDisplay(this.currentpId+" error occurred when trying to get Data.");
+        try {
+            input = socket.getInputStream();
+            output = socket.getOutputStream();
+        } catch (IOException exception) {
+            Peer2Peer.logger.logDisplay("Error while fetching data of Peer: " + this.currPeerID);
         }
     }
 }

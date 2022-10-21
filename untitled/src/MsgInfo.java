@@ -1,29 +1,27 @@
 import java.nio.charset.StandardCharsets;
 
-public class MessageData {
+public class MsgInfo {
 
-
-    private byte[] dataArray;
-    private byte[] dataLengthArray;
-    private byte[] payLoadArray;
+    private byte[] data;
+    private byte[] dataSizeArray;
+    private byte[] payloadData;
     private String dataLength;
     private String dataType;
     private int lengthOfMessage = Constants.typeOfMessage;
 
-    MessageData() {
+    MsgInfo() {
 
     }
 
-
-
-    MessageData(int n, byte[] arr) {
+    MsgInfo(int n, byte[] arr) {
         try {
             if (arr == null) {
-                if ((n == Constants.choke) || (n == Constants.unChoke) || (n == Constants.intersted) || (n == Constants.notInterested)) {
+                if ((n == Constants.choke) || (n == Constants.unChoke) || (n == Constants.intersted)
+                        || (n == Constants.notInterested)) {
                     this.lengthOfMessage = 1;
                     this.dataLength = this.lengthOfMessage + "";
-                    this.dataLengthArray = Constants.convertIntToByte(this.lengthOfMessage);
-                    this.payLoadArray = null;
+                    this.dataSizeArray = Constants.convertIntToByte(this.lengthOfMessage);
+                    this.payloadData = null;
                 } else {
                     System.out.println("Empty PayLoad");
                 }
@@ -31,29 +29,26 @@ public class MessageData {
             } else {
                 this.lengthOfMessage = arr.length + 1;
                 this.dataLength = this.lengthOfMessage + "";
-                this.dataLengthArray = Constants.convertIntToByte(this.lengthOfMessage);
-                if (this.dataLengthArray.length > Constants.sizeOfMessage) {
+                this.dataSizeArray = Constants.convertIntToByte(this.lengthOfMessage);
+                if (this.dataSizeArray.length > Constants.sizeOfMessage) {
                     System.out.println("Message length greater than size required");
                 }
-                this.payLoadArray = arr;
+                this.payloadData = arr;
             }
-            this.setDataType(""+n);
+            this.setDataType("" + n);
 
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
     }
 
-
     public byte[] getDataLengthArray() {
-        return dataLengthArray;
+        return dataSizeArray;
     }
-
 
     public byte[] getDataArray() {
-        return dataArray;
+        return data;
     }
-
 
     public String getDataType() {
         return dataType;
@@ -61,46 +56,49 @@ public class MessageData {
 
     public void setDataType(byte[] data) {
         this.dataType = new String(data, StandardCharsets.UTF_8);
-        this.dataArray = data;
+        this.data = data;
     }
 
     public void setDataType(String data) {
         this.dataType = data.trim();
-        this.dataArray = this.dataType.getBytes(StandardCharsets.UTF_8);
+        this.data = this.dataType.getBytes(StandardCharsets.UTF_8);
     }
 
     public void setDataLength(byte[] b) {
         int l = Constants.convertByteArrayToInt(b, 0);
         this.dataLength = "" + l;
-        this.dataLengthArray = b;
+        this.dataSizeArray = b;
         this.lengthOfMessage = l;
     }
 
-    public byte[] getPayLoadArray() {
-        return payLoadArray;
+    public byte[] getPayloadData() {
+        return payloadData;
     }
 
-    public void setPayLoadArray(byte[] payLoadArray) {
-        this.payLoadArray = payLoadArray;
+    public void setPayloadData(byte[] payloadData) {
+        this.payloadData = payloadData;
     }
 
-    public static byte[] convertDataToByteArray(MessageData m) {
+    public static byte[] convertDataToByteArray(MsgInfo m) {
         byte[] dataByteArray;
         int dType;
         try {
             dType = Integer.parseInt(m.getDataType());
-            if ((m.getDataArray() == null) || ((dType < 0) || dType > 7) || (m.getDataLengthArray().length > Constants.sizeOfMessage) || (m.getDataLengthArray() == null)) {
+            if ((m.getDataArray() == null) || ((dType < 0) || dType > 7)
+                    || (m.getDataLengthArray().length > Constants.sizeOfMessage) || (m.getDataLengthArray() == null)) {
                 throw new Exception("Message is Not Valid");
             }
-            if (m.getPayLoadArray() == null) {
+            if (m.getPayloadData() == null) {
                 dataByteArray = new byte[Constants.sizeOfMessage + Constants.typeOfMessage];
                 System.arraycopy(m.getDataLengthArray(), 0, dataByteArray, 0, m.getDataLengthArray().length);
                 System.arraycopy(m.getDataArray(), 0, dataByteArray, Constants.sizeOfMessage, Constants.typeOfMessage);
             } else {
-                dataByteArray = new byte[Constants.sizeOfMessage + Constants.typeOfMessage + m.getPayLoadArray().length];
+                dataByteArray = new byte[Constants.sizeOfMessage + Constants.typeOfMessage
+                        + m.getPayloadData().length];
                 System.arraycopy(m.getDataLengthArray(), 0, dataByteArray, 0, m.getDataLengthArray().length);
                 System.arraycopy(m.getDataArray(), 0, dataByteArray, Constants.sizeOfMessage, Constants.typeOfMessage);
-                System.arraycopy(m.getPayLoadArray(), 0, dataByteArray, Constants.sizeOfMessage + Constants.typeOfMessage, m.getPayLoadArray().length);
+                System.arraycopy(m.getPayloadData(), 0, dataByteArray,
+                        Constants.sizeOfMessage + Constants.typeOfMessage, m.getPayloadData().length);
             }
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
@@ -109,4 +107,3 @@ public class MessageData {
         return dataByteArray;
     }
 }
-
