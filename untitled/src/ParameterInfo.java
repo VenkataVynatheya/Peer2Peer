@@ -1,0 +1,2 @@
+public class ParameterInfo {
+}
