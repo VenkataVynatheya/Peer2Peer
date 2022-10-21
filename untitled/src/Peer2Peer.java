@@ -8,14 +8,14 @@ public class Peer2Peer {
     public static HashMap<String, RemotePeerData> dataPrefNeighbourhashMap = new HashMap<>();
     static Logger logger;
     public static volatile Timer timer;
-    public static PayLoadData payLoadCurrent = null;
+    public static PayLoadInfo payLoadCurrent = null;
     static int portNumberClient;
     public static ServerSocket socket = null;
     public static Thread thread;
     public static String ID_peer;
     public static boolean isCompleteFlag = false;
-    public static Queue<DataParams> queue = new LinkedList<>();
-    public static Vector<Thread> nv = new Vector<>();
+    public static Queue<ParameterInfo> queue = new LinkedList<>();
+    public static Vector<Thread> vector = new Vector<>();
     public static Thread mp;
     public static Vector<Thread> peerThread = new Vector<>();
 
@@ -31,17 +31,17 @@ public class Peer2Peer {
 
             x: for (Map.Entry<String, RemotePeerData> hashMap : peerdatahashMap.entrySet()) {
                 RemotePeerData r = hashMap.getValue();
-                if (r.ID_Peer.equals(ID_peer)) {
-                    portNumberClient = Integer.parseInt(r.peerPort);
+                if (r.peerID.equals(ID_peer)) {
+                    portNumberClient = Integer.parseInt(r.peerPortNum);
 
-                    if (r.fileExists) {
+                    if (r.hasFile) {
                         flag = true;
                         break x;
                     }
                 }
             }
-            payLoadCurrent = new PayLoadData();
-            payLoadCurrent.startPayLoad(ID_peer, flag);
+            payLoadCurrent = new PayLoadInfo();
+            payLoadCurrent.initiatePayload(ID_peer, flag);
 
             if (flag) {
                 try {
@@ -59,7 +59,7 @@ public class Peer2Peer {
                     RemotePeerData RemotePeerData = hashMap.getValue();
                     if (Integer.parseInt(ID_peer) > Integer.parseInt(hashMap.getKey())) {
                         PeerController p = new PeerController(RemotePeerData.getPeerAddress(),
-                                Integer.parseInt(RemotePeerData.getPeerPort()), 1, ID_peer);
+                                Integer.parseInt(RemotePeerData.getPeerPortNumber()), 1, ID_peer);
                         Thread temp = new Thread((Runnable) p);
                         peerThread.add(temp);
                         temp.start();
@@ -103,7 +103,7 @@ public class Peer2Peer {
                         if (thread.isAlive())
                             thread.interrupt();
 
-                    for (Thread thread : nv)
+                    for (Thread thread : vector)
                         if (thread.isAlive())
                             thread.interrupt();
 
@@ -199,9 +199,9 @@ public class Peer2Peer {
                 RemotePeerData rm = peerdatahashMap.get(remoteID_peer);
                 if (remoteID_peer.equals(ID_peer))
                     continue;
-                if (rm.isCompleted == 0 && rm.isHandShake == 1)
+                if (rm.isDone == 0 && rm.isHandShake == 1)
                     interestedPeers++;
-                else if (rm.isCompleted == 1) {
+                else if (rm.isDone == 1) {
                     try {
                         dataPrefNeighbourhashMap.remove(remoteID_peer);
                     } catch (Exception ignored) {
@@ -221,13 +221,13 @@ public class Peer2Peer {
                     if (Total > Constants.preferredNeighboursTotal - 1)
                         break;
 
-                    if (RemotePeerData.isHandShake == 1 && !RemotePeerData.ID_Peer.equals(ID_peer)
-                            && peerdatahashMap.get(RemotePeerData.ID_Peer).isCompleted == 0) {
-                        peerdatahashMap.get(RemotePeerData.ID_Peer).isPreferredNeighbor = 1;
-                        dataPrefNeighbourhashMap.put(RemotePeerData.ID_Peer,
-                                peerdatahashMap.get(RemotePeerData.ID_Peer));
+                    if (RemotePeerData.isHandShake == 1 && !RemotePeerData.peerID.equals(ID_peer)
+                            && peerdatahashMap.get(RemotePeerData.peerID).isDone == 0) {
+                        peerdatahashMap.get(RemotePeerData.peerID).isNeighPreferred = 1;
+                        dataPrefNeighbourhashMap.put(RemotePeerData.peerID,
+                                peerdatahashMap.get(RemotePeerData.peerID));
                         Total++;
-                        s.append(RemotePeerData.ID_Peer).append(", ");
+                        s.append(RemotePeerData.peerID).append(", ");
 
                     }
                 }
@@ -239,11 +239,11 @@ public class Peer2Peer {
                     if (nextID_peer.equals(ID_peer))
                         continue;
 
-                    if (remotePeer.isCompleted == 0 && remotePeer.isHandShake == 1) {
+                    if (remotePeer.isDone == 0 && remotePeer.isHandShake == 1) {
                         if (!dataPrefNeighbourhashMap.containsKey(nextID_peer)) {
                             s.append(nextID_peer).append(", ");
                             dataPrefNeighbourhashMap.put(nextID_peer, peerdatahashMap.get(nextID_peer));
-                            peerdatahashMap.get(nextID_peer).isPreferredNeighbor = 1;
+                            peerdatahashMap.get(nextID_peer).isNeighPreferred = 1;
                         }
 
                     }

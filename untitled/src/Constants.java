@@ -7,13 +7,19 @@ public class Constants {
     public static int fileSize = 0;
     public static int pieceSize = 0;
     public static String fileDesc = "";
+    public static final int sizeOfHeader = 18;
+    public static final int sizeofZerobits = 10;
+    public static final int sizeOfPeerId = 4;
 
     public static final int sizeOfMessage = 4;
     public static final int typeOfMessage = 1;
     public static final int choke = 0;
     public static final int unChoke = 1;
     public static final int intersted = 2;
+    public static final String zeroBits = "0000000000";
     public static final int notInterested = 3;
+    public static final int sizeoOfHandShakeMessage = 32;
+    public static final String handshakeHeader = "P2PFILESHARINGPROJ";
     public static final int have = 4;
 
     public static final int piece = 7;

@@ -1,6 +1,6 @@
 import java.nio.charset.StandardCharsets;
 
-public class MessageData {
+public class MsgInfo {
 
     private byte[] data;
     private byte[] dataSizeArray;
@@ -9,11 +9,11 @@ public class MessageData {
     private String dataType;
     private int lengthOfMessage = Constants.typeOfMessage;
 
-    MessageData() {
+    MsgInfo() {
 
     }
 
-    MessageData(int n, byte[] arr) {
+    MsgInfo(int n, byte[] arr) {
         try {
             if (arr == null) {
                 if ((n == Constants.choke) || (n == Constants.unChoke) || (n == Constants.intersted)
@@ -79,7 +79,7 @@ public class MessageData {
         this.payloadData = payloadData;
     }
 
-    public static byte[] convertDataToByteArray(MessageData m) {
+    public static byte[] convertDataToByteArray(MsgInfo m) {
         byte[] dataByteArray;
         int dType;
         try {
