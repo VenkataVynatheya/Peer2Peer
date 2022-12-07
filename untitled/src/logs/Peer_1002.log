@@ -1,0 +1,255 @@
+12/06/2022 19:48:41 Peer 1002 is started
+12/06/2022 19:48:47 Peer 1002 has received a handshake message from 1001
+12/06/2022 19:48:47 Peer 1002 is sending HandShake to 1001
+12/06/2022 19:48:48 Peer 1002 sent a REQUEST message to Peer 1001
+12/06/2022 19:48:48 Peer 1002 sent a INTERESTED message to Peer 1001
+12/06/2022 19:48:49 Peer 1002 got CHOKED by Peer 1001
+12/06/2022 19:48:53 Peer 1002 sent a REQUEST message to Peer 1001
+12/06/2022 19:48:53 Peer 1002 sent a INTERESTED message to Peer 1001
+12/06/2022 19:48:53 Peer 1002 got HAVE message from Peer 1001
+12/06/2022 19:48:53 Peer 1002 sent a REQUEST message to Peer 1001
+12/06/2022 19:48:53 Peer 1002 sent a INTERESTED message to Peer 1001
+12/06/2022 19:48:53 Peer 1002 got CHOKED by Peer 1001
+12/06/2022 19:48:58 Peer 1002 got UNCHOKED by Peer 1001
+12/06/2022 19:48:59 Peer Refresh payload entered - [B@4c7a47b3 1001
+12/06/2022 19:48:59 Peer 1002 Peer has downloaded the bit 0 from peer 1001. It now contains 1 bits
+12/06/2022 19:49:00 Peer Refresh payload entered - [B@142ec6fd 1001
+12/06/2022 19:49:00 Peer 1002 Peer has downloaded the bit 1 from peer 1001. It now contains 2 bits
+12/06/2022 19:49:00 Peer Refresh payload entered - [B@7dfd4b62 1001
+12/06/2022 19:49:00 Peer 1002 Peer has downloaded the bit 2 from peer 1001. It now contains 3 bits
+12/06/2022 19:49:01 Peer Refresh payload entered - [B@be02182 1001
+12/06/2022 19:49:01 Peer 1002 Peer has downloaded the bit 3 from peer 1001. It now contains 4 bits
+12/06/2022 19:49:01 Peer Refresh payload entered - [B@140d2028 1001
+12/06/2022 19:49:01 Peer 1002 Peer has downloaded the bit 4 from peer 1001. It now contains 5 bits
+12/06/2022 19:49:02 Peer Refresh payload entered - [B@7676057a 1001
+12/06/2022 19:49:02 Peer 1002 Peer has downloaded the bit 5 from peer 1001. It now contains 6 bits
+12/06/2022 19:49:02 Peer Refresh payload entered - [B@6147e68d 1001
+12/06/2022 19:49:02 Peer 1002 Peer has downloaded the bit 6 from peer 1001. It now contains 7 bits
+12/06/2022 19:49:03 Peer Refresh payload entered - [B@6ba13716 1001
+12/06/2022 19:49:03 Peer 1002 Peer has downloaded the bit 7 from peer 1001. It now contains 8 bits
+12/06/2022 19:49:03 Peer Refresh payload entered - [B@1650562a 1001
+12/06/2022 19:49:03 Peer 1002 Peer has downloaded the bit 8 from peer 1001. It now contains 9 bits
+12/06/2022 19:49:04 Peer 1002 got CHOKED by Peer 1001
+12/06/2022 19:49:08 Peer 1002 sent a REQUEST message to Peer 1001
+12/06/2022 19:49:08 Peer 1002 sent a INTERESTED message to Peer 1001
+12/06/2022 19:49:08 Peer 1002 got HAVE message from Peer 1001
+12/06/2022 19:49:08 Peer 1002 sent a REQUEST message to Peer 1001
+12/06/2022 19:49:08 Peer 1002 sent a INTERESTED message to Peer 1001
+12/06/2022 19:49:09 Peer 1002 got CHOKED by Peer 1001
+12/06/2022 19:49:13 Peer 1002 sent a REQUEST message to Peer 1001
+12/06/2022 19:49:13 Peer 1002 sent a INTERESTED message to Peer 1001
+12/06/2022 19:49:13 Peer 1002 got HAVE message from Peer 1001
+12/06/2022 19:49:13 Peer 1002 sent a REQUEST message to Peer 1001
+12/06/2022 19:49:13 Peer 1002 sent a INTERESTED message to Peer 1001
+12/06/2022 19:49:14 Peer 1002 got CHOKED by Peer 1001
+12/06/2022 19:49:19 Peer 1002 got UNCHOKED by Peer 1001
+12/06/2022 19:49:19 Peer Refresh payload entered - [B@504bcc4f 1001
+12/06/2022 19:49:19 Peer 1002 Peer has downloaded the bit 9 from peer 1001. It now contains 10 bits
+12/06/2022 19:49:20 Peer Refresh payload entered - [B@e662b45 1001
+12/06/2022 19:49:20 Peer 1002 Peer has downloaded the bit 10 from peer 1001. It now contains 11 bits
+12/06/2022 19:49:20 Peer Refresh payload entered - [B@6c1da418 1001
+12/06/2022 19:49:20 Peer 1002 Peer has downloaded the bit 11 from peer 1001. It now contains 12 bits
+12/06/2022 19:49:21 Peer Refresh payload entered - [B@78e85eb7 1001
+12/06/2022 19:49:21 Peer 1002 Peer has downloaded the bit 12 from peer 1001. It now contains 13 bits
+12/06/2022 19:49:21 Peer Refresh payload entered - [B@764fdc51 1001
+12/06/2022 19:49:21 Peer 1002 Peer has downloaded the bit 13 from peer 1001. It now contains 14 bits
+12/06/2022 19:49:22 Peer Refresh payload entered - [B@49ccedde 1001
+12/06/2022 19:49:22 Peer 1002 Peer has downloaded the bit 14 from peer 1001. It now contains 15 bits
+12/06/2022 19:49:22 Peer Refresh payload entered - [B@48f0ad9b 1001
+12/06/2022 19:49:22 Peer 1002 Peer has downloaded the bit 15 from peer 1001. It now contains 16 bits
+12/06/2022 19:49:23 Peer Refresh payload entered - [B@72574fd4 1001
+12/06/2022 19:49:23 Peer 1002 Peer has downloaded the bit 16 from peer 1001. It now contains 17 bits
+12/06/2022 19:49:23 Peer Refresh payload entered - [B@7af2b89b 1001
+12/06/2022 19:49:23 Peer 1002 Peer has downloaded the bit 17 from peer 1001. It now contains 18 bits
+12/06/2022 19:49:24 Peer 1002 got CHOKED by Peer 1001
+12/06/2022 19:49:28 Peer 1002 sent a REQUEST message to Peer 1001
+12/06/2022 19:49:28 Peer 1002 sent a INTERESTED message to Peer 1001
+12/06/2022 19:49:28 Peer 1002 got HAVE message from Peer 1001
+12/06/2022 19:49:28 Peer 1002 sent a REQUEST message to Peer 1001
+12/06/2022 19:49:28 Peer 1002 sent a INTERESTED message to Peer 1001
+12/06/2022 19:49:29 Peer 1002 got CHOKED by Peer 1001
+12/06/2022 19:49:33 Peer 1002 sent a REQUEST message to Peer 1001
+12/06/2022 19:49:33 Peer 1002 sent a INTERESTED message to Peer 1001
+12/06/2022 19:49:33 Peer 1002 got HAVE message from Peer 1001
+12/06/2022 19:49:33 Peer 1002 sent a REQUEST message to Peer 1001
+12/06/2022 19:49:33 Peer 1002 sent a INTERESTED message to Peer 1001
+12/06/2022 19:49:34 Peer 1002 got CHOKED by Peer 1001
+12/06/2022 19:49:39 Peer 1002 got UNCHOKED by Peer 1001
+12/06/2022 19:49:39 Peer Refresh payload entered - [B@54fe0806 1001
+12/06/2022 19:49:39 Peer 1002 Peer has downloaded the bit 18 from peer 1001. It now contains 19 bits
+12/06/2022 19:49:40 Peer Refresh payload entered - [B@192ffb77 1001
+12/06/2022 19:49:40 Peer 1002 Peer has downloaded the bit 19 from peer 1001. It now contains 20 bits
+12/06/2022 19:49:40 Peer Refresh payload entered - [B@51ce2e69 1001
+12/06/2022 19:49:40 Peer 1002 Peer has downloaded the bit 20 from peer 1001. It now contains 21 bits
+12/06/2022 19:49:41 Peer Refresh payload entered - [B@3e1772ab 1001
+12/06/2022 19:49:41 Peer 1002 Peer has downloaded the bit 21 from peer 1001. It now contains 22 bits
+12/06/2022 19:49:41 Peer Refresh payload entered - [B@1a8de357 1001
+12/06/2022 19:49:41 Peer 1002 Peer has downloaded the bit 22 from peer 1001. It now contains 23 bits
+12/06/2022 19:49:42 Peer Refresh payload entered - [B@7c9f4732 1001
+12/06/2022 19:49:42 Peer 1002 Peer has downloaded the bit 23 from peer 1001. It now contains 24 bits
+12/06/2022 19:49:42 Peer Refresh payload entered - [B@5c0293ae 1001
+12/06/2022 19:49:42 Peer 1002 Peer has downloaded the bit 24 from peer 1001. It now contains 25 bits
+12/06/2022 19:49:43 Peer Refresh payload entered - [B@598530af 1001
+12/06/2022 19:49:43 Peer 1002 Peer has downloaded the bit 25 from peer 1001. It now contains 26 bits
+12/06/2022 19:49:43 Peer 1002 got CHOKED by Peer 1001
+12/06/2022 19:49:48 Peer 1002 sent a REQUEST message to Peer 1001
+12/06/2022 19:49:48 Peer 1002 sent a INTERESTED message to Peer 1001
+12/06/2022 19:49:48 Peer 1002 got HAVE message from Peer 1001
+12/06/2022 19:49:48 Peer 1002 sent a REQUEST message to Peer 1001
+12/06/2022 19:49:48 Peer 1002 sent a INTERESTED message to Peer 1001
+12/06/2022 19:49:48 Peer 1002 got CHOKED by Peer 1001
+12/06/2022 19:49:53 Peer 1002 sent a REQUEST message to Peer 1001
+12/06/2022 19:49:53 Peer 1002 sent a INTERESTED message to Peer 1001
+12/06/2022 19:49:53 Peer 1002 got HAVE message from Peer 1001
+12/06/2022 19:49:53 Peer 1002 sent a REQUEST message to Peer 1001
+12/06/2022 19:49:53 Peer 1002 sent a INTERESTED message to Peer 1001
+12/06/2022 19:49:53 Peer 1002 got CHOKED by Peer 1001
+12/06/2022 19:49:58 Peer 1002 got UNCHOKED by Peer 1001
+12/06/2022 19:49:59 Peer Refresh payload entered - [B@2ce7f793 1001
+12/06/2022 19:49:59 Peer 1002 Peer has downloaded the bit 26 from peer 1001. It now contains 27 bits
+12/06/2022 19:49:59 Peer Refresh payload entered - [B@2ac793ea 1001
+12/06/2022 19:49:59 Peer 1002 Peer has downloaded the bit 27 from peer 1001. It now contains 28 bits
+12/06/2022 19:50:00 Peer Refresh payload entered - [B@6210eaff 1001
+12/06/2022 19:50:00 Peer 1002 Peer has downloaded the bit 28 from peer 1001. It now contains 29 bits
+12/06/2022 19:50:00 Peer Refresh payload entered - [B@1260ae5a 1001
+12/06/2022 19:50:00 Peer 1002 Peer has downloaded the bit 29 from peer 1001. It now contains 30 bits
+12/06/2022 19:50:01 Peer Refresh payload entered - [B@1a898ea 1001
+12/06/2022 19:50:01 Peer 1002 Peer has downloaded the bit 30 from peer 1001. It now contains 31 bits
+12/06/2022 19:50:01 Peer Refresh payload entered - [B@17e613f6 1001
+12/06/2022 19:50:02 Peer 1002 Peer has downloaded the bit 31 from peer 1001. It now contains 32 bits
+12/06/2022 19:50:02 Peer Refresh payload entered - [B@724454e7 1001
+12/06/2022 19:50:02 Peer 1002 Peer has downloaded the bit 32 from peer 1001. It now contains 33 bits
+12/06/2022 19:50:03 Peer Refresh payload entered - [B@6541368b 1001
+12/06/2022 19:50:03 Peer 1002 Peer has downloaded the bit 33 from peer 1001. It now contains 34 bits
+12/06/2022 19:50:03 Peer Refresh payload entered - [B@20eb9d01 1001
+12/06/2022 19:50:03 Peer 1002 Peer has downloaded the bit 34 from peer 1001. It now contains 35 bits
+12/06/2022 19:50:04 Peer 1002 got CHOKED by Peer 1001
+12/06/2022 19:50:08 Peer 1002 sent a REQUEST message to Peer 1001
+12/06/2022 19:50:08 Peer 1002 sent a INTERESTED message to Peer 1001
+12/06/2022 19:50:08 Peer 1002 got HAVE message from Peer 1001
+12/06/2022 19:50:08 Peer 1002 sent a REQUEST message to Peer 1001
+12/06/2022 19:50:08 Peer 1002 sent a INTERESTED message to Peer 1001
+12/06/2022 19:50:09 Peer 1002 got CHOKED by Peer 1001
+12/06/2022 19:50:13 Peer 1002 sent a REQUEST message to Peer 1001
+12/06/2022 19:50:13 Peer 1002 sent a INTERESTED message to Peer 1001
+12/06/2022 19:50:13 Peer 1002 got HAVE message from Peer 1001
+12/06/2022 19:50:13 Peer 1002 sent a REQUEST message to Peer 1001
+12/06/2022 19:50:13 Peer 1002 sent a INTERESTED message to Peer 1001
+12/06/2022 19:50:14 Peer 1002 got CHOKED by Peer 1001
+12/06/2022 19:50:19 Peer 1002 got UNCHOKED by Peer 1001
+12/06/2022 19:50:19 Peer Refresh payload entered - [B@7355349 1001
+12/06/2022 19:50:19 Peer 1002 Peer has downloaded the bit 35 from peer 1001. It now contains 36 bits
+12/06/2022 19:50:20 Peer Refresh payload entered - [B@5786dc24 1001
+12/06/2022 19:50:20 Peer 1002 Peer has downloaded the bit 36 from peer 1001. It now contains 37 bits
+12/06/2022 19:50:20 Peer Refresh payload entered - [B@3b1f4d31 1001
+12/06/2022 19:50:20 Peer 1002 Peer has downloaded the bit 37 from peer 1001. It now contains 38 bits
+12/06/2022 19:50:21 Peer Refresh payload entered - [B@47e0dcc6 1001
+12/06/2022 19:50:21 Peer 1002 Peer has downloaded the bit 38 from peer 1001. It now contains 39 bits
+12/06/2022 19:50:21 Peer Refresh payload entered - [B@6ae27068 1001
+12/06/2022 19:50:21 Peer 1002 Peer has downloaded the bit 39 from peer 1001. It now contains 40 bits
+12/06/2022 19:50:22 Peer Refresh payload entered - [B@be4e6ec 1001
+12/06/2022 19:50:22 Peer 1002 Peer has downloaded the bit 40 from peer 1001. It now contains 41 bits
+12/06/2022 19:50:22 Peer Refresh payload entered - [B@4a535464 1001
+12/06/2022 19:50:22 Peer 1002 Peer has downloaded the bit 41 from peer 1001. It now contains 42 bits
+12/06/2022 19:50:23 Peer Refresh payload entered - [B@b94a704 1001
+12/06/2022 19:50:23 Peer 1002 Peer has downloaded the bit 42 from peer 1001. It now contains 43 bits
+12/06/2022 19:50:23 Peer Refresh payload entered - [B@728cf72e 1001
+12/06/2022 19:50:23 Peer 1002 Peer has downloaded the bit 43 from peer 1001. It now contains 44 bits
+12/06/2022 19:50:24 Peer 1002 got CHOKED by Peer 1001
+12/06/2022 19:50:28 Peer 1002 sent a REQUEST message to Peer 1001
+12/06/2022 19:50:28 Peer 1002 sent a INTERESTED message to Peer 1001
+12/06/2022 19:50:28 Peer 1002 got HAVE message from Peer 1001
+12/06/2022 19:50:28 Peer 1002 sent a REQUEST message to Peer 1001
+12/06/2022 19:50:28 Peer 1002 sent a INTERESTED message to Peer 1001
+12/06/2022 19:50:29 Peer 1002 got CHOKED by Peer 1001
+12/06/2022 19:50:33 Peer 1002 sent a REQUEST message to Peer 1001
+12/06/2022 19:50:33 Peer 1002 sent a INTERESTED message to Peer 1001
+12/06/2022 19:50:33 Peer 1002 got HAVE message from Peer 1001
+12/06/2022 19:50:33 Peer 1002 sent a REQUEST message to Peer 1001
+12/06/2022 19:50:33 Peer 1002 sent a INTERESTED message to Peer 1001
+12/06/2022 19:50:34 Peer 1002 got CHOKED by Peer 1001
+12/06/2022 19:50:39 Peer 1002 got UNCHOKED by Peer 1001
+12/06/2022 19:50:39 Peer Refresh payload entered - [B@5e73ac15 1001
+12/06/2022 19:50:39 Peer 1002 Peer has downloaded the bit 44 from peer 1001. It now contains 45 bits
+12/06/2022 19:50:40 Peer Refresh payload entered - [B@ed323cb 1001
+12/06/2022 19:50:40 Peer 1002 Peer has downloaded the bit 45 from peer 1001. It now contains 46 bits
+12/06/2022 19:50:40 Peer Refresh payload entered - [B@20d10992 1001
+12/06/2022 19:50:40 Peer 1002 Peer has downloaded the bit 46 from peer 1001. It now contains 47 bits
+12/06/2022 19:50:41 Peer Refresh payload entered - [B@35f1af21 1001
+12/06/2022 19:50:41 Peer 1002 Peer has downloaded the bit 47 from peer 1001. It now contains 48 bits
+12/06/2022 19:50:41 Peer Refresh payload entered - [B@7621ae8e 1001
+12/06/2022 19:50:41 Peer 1002 Peer has downloaded the bit 48 from peer 1001. It now contains 49 bits
+12/06/2022 19:50:42 Peer Refresh payload entered - [B@617b16fa 1001
+12/06/2022 19:50:42 Peer 1002 Peer has downloaded the bit 49 from peer 1001. It now contains 50 bits
+12/06/2022 19:50:42 Peer Refresh payload entered - [B@49ce0ede 1001
+12/06/2022 19:50:42 Peer 1002 Peer has downloaded the bit 50 from peer 1001. It now contains 51 bits
+12/06/2022 19:50:43 Peer Refresh payload entered - [B@717e3861 1001
+12/06/2022 19:50:43 Peer 1002 Peer has downloaded the bit 51 from peer 1001. It now contains 52 bits
+12/06/2022 19:50:43 Peer 1002 got CHOKED by Peer 1001
+12/06/2022 19:50:48 Peer 1002 sent a REQUEST message to Peer 1001
+12/06/2022 19:50:48 Peer 1002 sent a INTERESTED message to Peer 1001
+12/06/2022 19:50:48 Peer 1002 got HAVE message from Peer 1001
+12/06/2022 19:50:48 Peer 1002 sent a REQUEST message to Peer 1001
+12/06/2022 19:50:48 Peer 1002 sent a INTERESTED message to Peer 1001
+12/06/2022 19:50:49 Peer 1002 got CHOKED by Peer 1001
+12/06/2022 19:50:53 Peer 1002 sent a REQUEST message to Peer 1001
+12/06/2022 19:50:53 Peer 1002 sent a INTERESTED message to Peer 1001
+12/06/2022 19:50:53 Peer 1002 got HAVE message from Peer 1001
+12/06/2022 19:50:53 Peer 1002 sent a REQUEST message to Peer 1001
+12/06/2022 19:50:53 Peer 1002 sent a INTERESTED message to Peer 1001
+12/06/2022 19:50:53 Peer 1002 got CHOKED by Peer 1001
+12/06/2022 19:50:58 Peer 1002 got UNCHOKED by Peer 1001
+12/06/2022 19:50:59 Peer Refresh payload entered - [B@a50ad1e 1001
+12/06/2022 19:50:59 Peer 1002 Peer has downloaded the bit 52 from peer 1001. It now contains 53 bits
+12/06/2022 19:50:59 Peer Refresh payload entered - [B@33a5b668 1001
+12/06/2022 19:50:59 Peer 1002 Peer has downloaded the bit 53 from peer 1001. It now contains 54 bits
+12/06/2022 19:51:00 Peer Refresh payload entered - [B@aa4e63c 1001
+12/06/2022 19:51:00 Peer 1002 Peer has downloaded the bit 54 from peer 1001. It now contains 55 bits
+12/06/2022 19:51:00 Peer Refresh payload entered - [B@a196a39 1001
+12/06/2022 19:51:00 Peer 1002 Peer has downloaded the bit 55 from peer 1001. It now contains 56 bits
+12/06/2022 19:51:01 Peer Refresh payload entered - [B@52e0e39 1001
+12/06/2022 19:51:01 Peer 1002 Peer has downloaded the bit 56 from peer 1001. It now contains 57 bits
+12/06/2022 19:51:01 Peer Refresh payload entered - [B@1ba6ee02 1001
+12/06/2022 19:51:01 Peer 1002 Peer has downloaded the bit 57 from peer 1001. It now contains 58 bits
+12/06/2022 19:51:02 Peer Refresh payload entered - [B@361e6e4c 1001
+12/06/2022 19:51:02 Peer 1002 Peer has downloaded the bit 58 from peer 1001. It now contains 59 bits
+12/06/2022 19:51:02 Peer Refresh payload entered - [B@77979214 1001
+12/06/2022 19:51:02 Peer 1002 Peer has downloaded the bit 59 from peer 1001. It now contains 60 bits
+12/06/2022 19:51:03 Peer Refresh payload entered - [B@2bd0519 1001
+12/06/2022 19:51:03 Peer 1002 Peer has downloaded the bit 60 from peer 1001. It now contains 61 bits
+12/06/2022 19:51:03 Peer 1002 got CHOKED by Peer 1001
+12/06/2022 19:51:08 Peer 1002 sent a REQUEST message to Peer 1001
+12/06/2022 19:51:08 Peer 1002 sent a INTERESTED message to Peer 1001
+12/06/2022 19:51:08 Peer 1002 got HAVE message from Peer 1001
+12/06/2022 19:51:08 Peer 1002 sent a REQUEST message to Peer 1001
+12/06/2022 19:51:08 Peer 1002 sent a INTERESTED message to Peer 1001
+12/06/2022 19:51:08 Peer 1002 got CHOKED by Peer 1001
+12/06/2022 19:51:13 Peer 1002 sent a REQUEST message to Peer 1001
+12/06/2022 19:51:13 Peer 1002 sent a INTERESTED message to Peer 1001
+12/06/2022 19:51:13 Peer 1002 got HAVE message from Peer 1001
+12/06/2022 19:51:13 Peer 1002 sent a REQUEST message to Peer 1001
+12/06/2022 19:51:13 Peer 1002 sent a INTERESTED message to Peer 1001
+12/06/2022 19:51:14 Peer 1002 got CHOKED by Peer 1001
+12/06/2022 19:51:19 Peer 1002 got UNCHOKED by Peer 1001
+12/06/2022 19:51:19 Peer Refresh payload entered - [B@2ec72db2 1001
+12/06/2022 19:51:19 Peer 1002 Peer has downloaded the bit 61 from peer 1001. It now contains 62 bits
+12/06/2022 19:51:20 Peer Refresh payload entered - [B@6bee5a28 1001
+12/06/2022 19:51:20 Peer 1002 Peer has downloaded the bit 62 from peer 1001. It now contains 63 bits
+12/06/2022 19:51:20 Peer Refresh payload entered - [B@20227273 1001
+12/06/2022 19:51:20 Peer 1002 Peer has downloaded the bit 63 from peer 1001. It now contains 64 bits
+12/06/2022 19:51:21 Peer Refresh payload entered - [B@4a5d2ea3 1001
+12/06/2022 19:51:21 Peer 1002 Peer has downloaded the bit 64 from peer 1001. It now contains 65 bits
+12/06/2022 19:51:21 Peer Refresh payload entered - [B@5d6020e7 1001
+12/06/2022 19:51:21 Peer 1002 Peer has downloaded the bit 65 from peer 1001. It now contains 66 bits
+12/06/2022 19:51:22 Peer Refresh payload entered - [B@44c60e79 1001
+12/06/2022 19:51:22 Peer 1002 Peer has downloaded the bit 66 from peer 1001. It now contains 67 bits
+12/06/2022 19:51:22 Peer Refresh peer configg - 1002
+12/06/2022 19:51:22 Peer [1001, localhost, 8001, 1]
+12/06/2022 19:51:22 Peer [1002, localhost, 8002, 0]
+12/06/2022 19:51:22 Peer sto -- 1001 localhost 8001 1
+1002 localhost 8002 1
+
+12/06/2022 19:51:22 Peer 1002 has completed downloading the file!!!
+12/06/2022 19:51:22 Peer 1002 is sending NOT INTERESTED MESSAGE
+12/06/2022 19:51:23 Peer All peers have completed downloading the file.
+12/06/2022 19:51:25 Peer 1002 Peer is terimating.
