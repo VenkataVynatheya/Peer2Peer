@@ -5,48 +5,41 @@ import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-public class Logger
-{
+public class Logger {
     static FileOutputStream file;
     static OutputStreamWriter writer;
-    Logger(String fileName) throws Exception
-    {
+
+    Logger(String fileName) throws Exception {
         File dir = new File("logs");
         dir.mkdir();
         File logsFile = new File("logs", fileName);
-        file=new FileOutputStream("logs//"+fileName);
-        writer=new OutputStreamWriter(file, StandardCharsets.UTF_8);
+        file = new FileOutputStream("logs//" + fileName);
+        writer = new OutputStreamWriter(file, StandardCharsets.UTF_8);
     }
-    public void printLog(String s)
-    {
-        try
-        {
-            writer.write(s+"\n");
-        }
-        catch (Exception ex)
-        {
+
+    public void printLog(String s) {
+        try {
+            writer.write(s + "\n");
+        } catch (Exception ex) {
             ex.printStackTrace();
             System.out.println(ex.getMessage());
         }
     }
-    public  void logExit()
-    {
-        try
-        {
+
+    public void logExit() {
+        try {
             writer.flush();
             file.close();
-        }
-        catch (Exception ex)
-        {
+        } catch (Exception ex) {
             ex.printStackTrace();
             System.out.println(ex.getMessage());
         }
     }
-    public  void logDisplay(String message)
-    {
-        Calendar c=Calendar.getInstance();
-        SimpleDateFormat d=new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
-        printLog(d.format(c.getTime())+" Peer "+ message);
-        System.out.println(d.format(c.getTime())+" Peer "+ message);
+
+    public void logDisplay(String message) {
+        Calendar c = Calendar.getInstance();
+        SimpleDateFormat d = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+        printLog(d.format(c.getTime()) + " Peer " + message);
+        System.out.println(d.format(c.getTime()) + " Peer " + message);
     }
 }

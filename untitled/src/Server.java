@@ -2,26 +2,25 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 public class Server implements Runnable {
-    private final ServerSocket serverSocket;
-    private final String peerID;
-    Socket remoteSocketConnection;
-    Thread t;
+    private final ServerSocket socket;
+    private final String ID_Peer;
+    Socket socket_Remote;
+    Thread t1;
 
-    public Server(ServerSocket socket, String peerId) {
-        this.serverSocket = socket;
-        this.peerID = peerId;
+    public Server(ServerSocket s, String ID_Peer) {
+        this.socket = s;
+        this.ID_Peer = ID_Peer;
     }
 
     public void run() {
         while (true) {
             try {
-                remoteSocketConnection = serverSocket.accept();
-                t = new Thread((Runnable) new PeerController(this.peerID, remoteSocketConnection, 0));
-                Peer2Peer.vector.add(t);
-                t.start();
-            } catch (Exception exception) {
-                Peer2Peer.logger
-                        .logDisplay("Exception occurred while establishing a connection with Peer ID: " + this.peerID);
+                socket_Remote = socket.accept();
+                t1 = new Thread(new PeerController(this.ID_Peer, socket_Remote, 0));
+                Peer2Peer.vector.add(t1);
+                t1.start();
+            } catch (Exception ex) {
+                Peer2Peer.logger.logDisplay(this.ID_Peer + " an Exception when trying to establish a connection");
             }
         }
     }
