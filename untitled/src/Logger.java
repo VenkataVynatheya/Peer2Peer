@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 public class Logger {
     static FileOutputStream file;
     static OutputStreamWriter writer;
@@ -25,16 +26,20 @@ public class Logger {
 =======
 public class Logger
 {
+=======
+public class Logger {
+>>>>>>> c086a9c (Modified Files(Venkat))
     static FileOutputStream file;
     static OutputStreamWriter writer;
-    Logger(String fileName) throws Exception
-    {
+
+    Logger(String fileName) throws Exception {
         File dir = new File("logs");
         dir.mkdir();
         File logsFile = new File("logs", fileName);
-        file=new FileOutputStream("logs//"+fileName);
-        writer=new OutputStreamWriter(file, StandardCharsets.UTF_8);
+        file = new FileOutputStream("logs//" + fileName);
+        writer = new OutputStreamWriter(file, StandardCharsets.UTF_8);
     }
+<<<<<<< HEAD
     public void printLog(String s)
     {
         try
@@ -44,10 +49,18 @@ public class Logger
         catch (Exception ex)
         {
 >>>>>>> 7a2324b (Added Handshake and Starting remote peers)
+=======
+
+    public void printLog(String s) {
+        try {
+            writer.write(s + "\n");
+        } catch (Exception ex) {
+>>>>>>> c086a9c (Modified Files(Venkat))
             ex.printStackTrace();
             System.out.println(ex.getMessage());
         }
     }
+<<<<<<< HEAD
 <<<<<<< HEAD
 
     public void logExit() {
@@ -66,17 +79,29 @@ public class Logger
         catch (Exception ex)
         {
 >>>>>>> 7a2324b (Added Handshake and Starting remote peers)
+=======
+
+    public void logExit() {
+        try {
+            writer.flush();
+            file.close();
+        } catch (Exception ex) {
+>>>>>>> c086a9c (Modified Files(Venkat))
             ex.printStackTrace();
             System.out.println(ex.getMessage());
         }
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> c086a9c (Modified Files(Venkat))
 
     public void logDisplay(String message) {
         Calendar c = Calendar.getInstance();
         SimpleDateFormat d = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
         printLog(d.format(c.getTime()) + " Peer " + message);
         System.out.println(d.format(c.getTime()) + " Peer " + message);
+<<<<<<< HEAD
 =======
     public  void logDisplay(String message)
     {
@@ -85,5 +110,7 @@ public class Logger
         printLog(d.format(c.getTime())+" Peer "+ message);
         System.out.println(d.format(c.getTime())+" Peer "+ message);
 >>>>>>> 7a2324b (Added Handshake and Starting remote peers)
+=======
+>>>>>>> c086a9c (Modified Files(Venkat))
     }
 }

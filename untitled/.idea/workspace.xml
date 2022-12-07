@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="338275e2-ca98-446a-9e61-e990e9e3441b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/1001/thefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/1002/thefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/1003/thefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/1004/thefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/CommonConfig.cfg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Constants.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DataController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DataController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DataParameters.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DataParameters.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Handshake.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Logger.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/MessageInfo.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/MessageInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/PayLoadData.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Payloadbit.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Peer2Peer$assignPrefNeighbours.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Peer2Peer$assignUnchokedNeighbours.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Peer2Peer.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/PeerController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/RemotePeerData.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/RemotePeerStart.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/RemotePeerStart.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Server.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logs/Peer_1001.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logs/Peer_1002.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logs/Peer_1003.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logs/Peer_1004.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Handshake.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Handshake.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Logger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Logger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MsgInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MsgInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PayLoadData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PayLoadData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PayLoadInfo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Peer2Peer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Peer2Peer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PeerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PeerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PeerInfo.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/src/PeerInfo.cfg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/RemotePeerData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RemotePeerData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/RemotePeerInit.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="2GKCwQLFoXvc6C5oKkK0U99SMyQ" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="untitled" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="untitled" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="338275e2-ca98-446a-9e61-e990e9e3441b" name="Changes" comment="" />
+      <created>1666128128788</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1666128128788</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="CUSTOM_BOOLEAN_PROPERTIES">
+                <map>
+                  <entry key="Show.Git.Branches" value="true" />
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
