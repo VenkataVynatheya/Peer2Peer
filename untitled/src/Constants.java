@@ -8,30 +8,6 @@ public class Constants {
     public static int favourableUnchokingWindow = 0;
     public static int sizeOfFile = 0;
     public static int sizeOfbit = 0;
-<<<<<<< HEAD
-    public static String fileDesc = "";
-    public static final int maxbitLength = 4;
-    public static final int handShakeMessageLength = 32;
-    public static final int size_Header = 18;
-    public static final int size_ZeroBit = 10;
-    public static final int size_PeerID = 4;
-    public static final int message_Size = 4;
-    public static final int message_Type = 1;
-    public static final int choke = 0;
-    public static final int unChoke = 1;
-    public static final int Interested = 2;
-    public static final int notInterested = 3;
-    public static final int have = 4;
-    public static final int bitField = 5;
-    public static final int request = 6;
-    public static final int bit = 7;
-
-    public static int preferredNumberTotal = 0;
-
-    public static int fileSize = 0;
-    public static int pieceSize = 0;
-=======
->>>>>>> c086a9c (Modified Files(Venkat))
     public static String fileDesc = "";
     public static final int maxbitLength = 4;
     public static final int handShakeMessageLength = 32;
