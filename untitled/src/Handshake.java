@@ -3,35 +3,28 @@ import java.util.Arrays;
 import java.util.HashMap;
 
 public class Handshake extends Constants {
-
-    private byte[] hsMsg;
-    private int ID_peer;
-    private String hsHeader;
-    private String zeroBits;
-    private int k;
-
-    public byte[] getMsg() {
-        return hsMsg;
+    public byte[] receive_HandShakeMsg() {
+        return handShakeMessage;
     }
 
-    public void setMsg(byte[] hsMsg) {
-        this.hsMsg = hsMsg;
+    public void assignHandShakeMsg(byte[] handShakeMessage) {
+        this.handShakeMessage = handShakeMessage;
     }
 
     public int getPeerId() {
-        return ID_peer;
+        return peerId;
     }
 
-    public void setPeerId(int ID_peer) {
-        this.ID_peer = ID_peer;
+    public void setPeerId(int peerId) {
+        this.peerId = peerId;
     }
 
-    public String getHSHeader() {
-        return hsHeader;
+    public String getHandShakeHeader() {
+        return handShakeHeader;
     }
 
-    public void setHandShakeHeader(String hsHeader) {
-        this.hsHeader = hsHeader;
+    public void setHandShakeHeader(String handShakeHeader) {
+        this.handShakeHeader = handShakeHeader;
     }
 
     public String getZeroBits() {
@@ -44,45 +37,100 @@ public class Handshake extends Constants {
 
     @Override
     public String toString() {
-        return "Handshake {" +
-                "hsMsg=" + Arrays.toString(hsMsg) +
+        return "Handshake{" +
+                "handShakeMessage=" + Arrays.toString(handShakeMessage) +
                 '}';
     }
 
-    public byte[] getHSHeaderBytes() {
-        return hsHeaderBytes;
+    private byte[] handShakeMessage;
+    private int peerId;
+    private String handShakeHeader;
+    private String zeroBits;
+    private int k;
+
+    public byte[] getHandShakeHeaderBytes() {
+        return handShakeHeaderBytes;
     }
 
-    public void setHandShakeHeaderBytes(byte[] hsHeaderBytes) {
-        this.hsHeaderBytes = hsHeaderBytes;
+    public void setHandShakeHeaderBytes(byte[] handShakeHeaderBytes) {
+        this.handShakeHeaderBytes = handShakeHeaderBytes;
     }
 
-    private byte[] hsHeaderBytes = new byte[32];
+    private byte[] handShakeHeaderBytes = new byte[32];
 
     Handshake() {
 
     }
 
-    Handshake(int ID_peer) {
-        this.hsMsg = new byte[32];
-        this.ID_peer = ID_peer;
-        this.hsHeader = Constants.handshakeHeader;
+    Handshake(int peerId) {
+        this.handShakeMessage = new byte[32];
+        this.peerId = peerId;
+        this.handShakeHeader = Constants.handshakeHeader;
         this.zeroBits = Constants.zeroBits;
         this.k = 0;
-        this.hsHeaderBytes = hsHeader.getBytes(StandardCharsets.UTF_8);
+        this.handShakeHeaderBytes = handShakeHeader.getBytes(StandardCharsets.UTF_8);
     }
 
-    public void setMsgID_peer(byte[] ID_peerByteArray) {
+    public void generateHandShake() {
+        byte[] handShakeHeaderByteArray = this.handShakeHeader.getBytes();
+        byte[] zeroBitsByteArray = this.zeroBits.getBytes(StandardCharsets.UTF_8);
+        String peerIdString = this.peerId + "";
+        byte[] peerIdByteArray = peerIdString.getBytes(StandardCharsets.UTF_8);
+        int k = 0;
         try {
-            if (ID_peerByteArray == null) {
-                throw new Exception("Invalid PeerID");
+            assignHandShakeMsgHeader(handShakeHeaderByteArray);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            System.out.println(ex.getMessage());
+        }
+        try {
+            assignHandShakeMsgPaddng(zeroBitsByteArray);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            System.out.println(ex.getMessage());
+        }
+        try {
+            assignHandShakeMsgpeerId(peerIdByteArray);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            System.out.println(ex.getMessage());
+        }
+        System.out.println(
+                "Hand Shake message generated is : " + new String(this.handShakeMessage, StandardCharsets.UTF_8));
+    }
+
+    public void assignHandShakeMsgHeader(byte[] handShakeHeaderByteArray) {
+        try {
+            if (handShakeHeaderByteArray == null) {
+                throw new Exception("Please define valid Hand Shake Header");
             }
-            if (ID_peerByteArray.length > 4) {
-                throw new Exception("Zero bit padding length is greater than 10");
+            if (handShakeHeaderByteArray.length > 18) {
+                throw new Exception(" Hand Shake Header length is greater than 18 bytes");
             }
 
-            for (int i = 0; i < ID_peerByteArray.length; i++) {
-                this.hsMsg[k] = ID_peerByteArray[i];
+            for (int i = 0; i < handShakeHeaderByteArray.length; i++) {
+                this.handShakeMessage[k] = handShakeHeaderByteArray[i];
+                k++;
+            }
+
+        }
+
+        catch (Exception e) {
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void assignHandShakeMsgPaddng(byte[] zeroBitsByteArray) {
+        try {
+            if (zeroBitsByteArray == null) {
+                throw new Exception("Please define valid Zero bit padding");
+            }
+            if (zeroBitsByteArray.length > 10) {
+                throw new Exception("Zero bit padding length is greater than 10");
+            }
+            for (int i = 0; i < zeroBitsByteArray.length; i++) {
+                this.handShakeMessage[k] = zeroBitsByteArray[i];
                 k++;
             }
         } catch (Exception e) {
@@ -92,20 +140,73 @@ public class Handshake extends Constants {
 
     }
 
-    public void generateHandShake() {
-        byte[] hsHeaderByteArray = this.hsHeader.getBytes();
-        byte[] zeroBitsByteArray = this.zeroBits.getBytes(StandardCharsets.UTF_8);
-        String ID_peerString = this.ID_peer + "";
-        byte[] ID_peerByteArray = ID_peerString.getBytes(StandardCharsets.UTF_8);
-
+    public void assignHandShakeMsgpeerId(byte[] peerIdByteArray) {
         try {
-            setMsgID_peer(ID_peerByteArray);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            System.out.println(ex.getMessage());
+            if (peerIdByteArray == null) {
+                throw new Exception("Please define valid PeerId");
+            }
+            if (peerIdByteArray.length > 4) {
+                throw new Exception("Zero bit padding length is greater than 10");
+            }
+
+            for (int i = 0; i < peerIdByteArray.length; i++) {
+                this.handShakeMessage[k] = peerIdByteArray[i];
+                k++;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
-        System.out.println(
-                "Hand Shake message generated is : " + new String(this.hsMsg, StandardCharsets.UTF_8));
+
+    }
+
+    public static Handshake byteToHandShake(byte[] b) {
+
+        byte[] message_Header;
+        byte[] message_peerId;
+        Handshake h;
+        if (b.length != Constants.handShakeMessageLength) {
+            Peer2Peer.logger.logDisplay("INVALID length of HandShake Message");
+            System.exit(0);
+        }
+        h = new Handshake();
+        message_Header = new byte[Constants.size_Header];
+        message_peerId = new byte[Constants.size_PeerID];
+        System.arraycopy(b, 0, message_Header, 0, Constants.size_Header);
+        System.arraycopy(b, Constants.size_Header + Constants.size_ZeroBit, message_peerId, 0, Constants.size_PeerID);
+        h.assignHandShakeMsgHeader(message_Header);
+        h.assignHandShakeMsgpeerId(message_peerId);
+        return h;
+    }
+
+    public static byte[] hsk_toArray(Handshake handshake) {
+        byte[] m = new byte[Constants.handShakeMessageLength];
+
+        if (handshake.getHandShakeHeader().length() > Constants.size_Header || handshake.getHandShakeHeader() == null
+                || handshake.getHandShakeHeader().length() == 0) {
+            Peer2Peer.logger.logDisplay("HandShake header not VALID");
+            System.exit(0);
+        } else {
+            System.arraycopy(handshake.getHandShakeHeader().getBytes(StandardCharsets.UTF_8), 0, m, 0,
+                    handshake.getHandShakeHeader().length());
+        }
+        if (handshake.getZeroBits() == null || handshake.getZeroBits().isEmpty()
+                || handshake.getZeroBits().length() > Constants.size_ZeroBit) {
+            Peer2Peer.logger.logDisplay("INVALID Zero bits");
+            System.exit(0);
+        } else {
+            System.arraycopy(handshake.getZeroBits().getBytes(StandardCharsets.UTF_8), 0, m, Constants.size_Header,
+                    Constants.size_ZeroBit);
+
+        }
+        if ((String.valueOf(handshake.getPeerId())).length() > Constants.size_PeerID) {
+            Peer2Peer.logger.logDisplay("INVALID Peer bits");
+            System.exit(0);
+        } else {
+            System.arraycopy(String.valueOf(handshake.getPeerId()).getBytes(StandardCharsets.UTF_8), 0, m,
+                    Constants.size_Header + Constants.size_ZeroBit, Constants.size_PeerID);
+        }
+        return m;
     }
 
 }
