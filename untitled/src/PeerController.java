@@ -61,14 +61,15 @@ public class PeerController implements Runnable {
         byte[] size_data;
         byte[] type_data;
         byte[] array_msgHandShake = new byte[32];
-        byte[] array_bufmsg = new byte[Constants.message_Size + Constants.message_Type];
+        byte[] array_bufmsg = new byte[Constants.messageSize + Constants.messageType];
         try {
             if (this.typeOfSession == activeSession_Count) {
                 if (peerConnect()) {
                     throw new Exception("Failed to connect with : " + this.current_PeerID);
                 }
                 refresh_peerData(array_msgHandShake);
-                Peer2Peer.logger.logDisplay(this.current_PeerID + " is sending HandShake to " + this.remote_PeerID);
+                Peer2Peer.logger.logDisplay(
+                        "HandShake msg sent from Peer " + this.current_PeerID + " to " + this.remote_PeerID);
                 Peer2Peer.hm_peerData.get(remote_PeerID).position = 8;
                 MessageInfo md = new MessageInfo(Constants.bitField, Peer2Peer.payLoadCurrent.data_Encode());
                 op_Stream.write(MessageInfo.array_DataToByte(md));
@@ -77,9 +78,11 @@ public class PeerController implements Runnable {
                 if (peerConnect()) {
                     throw new Exception("Failed to connect with : " + this.current_PeerID);
                 }
-                Peer2Peer.logger.logDisplay(this.current_PeerID + " is sending HandShake to " + this.remote_PeerID);
+                Peer2Peer.logger.logDisplay(
+                        "HandShake msg sent from Peer  " + this.current_PeerID + " to " + this.remote_PeerID);
                 Peer2Peer.logger
-                        .logDisplay(this.current_PeerID + " makes a TCP connection with peer " + this.remote_PeerID);
+                        .logDisplay("TCP connection established between " + this.current_PeerID + " and "
+                                + this.remote_PeerID);
                 Peer2Peer.hm_peerData.get(remote_PeerID).position = 2;
             }
 
@@ -88,11 +91,11 @@ public class PeerController implements Runnable {
                 if ((HB = ip_Stream.read(array_bufmsg)) == -1) {
                     break var;
                 }
-                type_data = new byte[Constants.message_Type];
-                size_data = new byte[Constants.message_Size];
+                type_data = new byte[Constants.messageType];
+                size_data = new byte[Constants.messageSize];
 
-                System.arraycopy(array_bufmsg, 0, size_data, 0, Constants.message_Size);
-                System.arraycopy(array_bufmsg, Constants.message_Size, type_data, 0, Constants.message_Type);
+                System.arraycopy(array_bufmsg, 0, size_data, 0, Constants.messageSize);
+                System.arraycopy(array_bufmsg, Constants.messageSize, type_data, 0, Constants.messageType);
                 MessageInfo mi = new MessageInfo();
                 mi.setdata_Type(type_data);
                 mi.setdata_Size(size_data);
@@ -112,11 +115,11 @@ public class PeerController implements Runnable {
                         }
                         byte_Read += bytes_tobeRead;
                     }
-                    byte[] MessageInfoPayLoad = new byte[mi.getsize_Message() + Constants.message_Size];
+                    byte[] MessageInfoPayLoad = new byte[mi.getsize_Message() + Constants.messageSize];
                     System.arraycopy(array_bufmsg, 0, MessageInfoPayLoad, 0,
-                            Constants.message_Size + Constants.message_Type);
+                            Constants.messageSize + Constants.messageType);
                     System.arraycopy(payloadMessage, 0, MessageInfoPayLoad,
-                            Constants.message_Size + Constants.message_Type, payloadMessage.length);
+                            Constants.messageSize + Constants.messageType, payloadMessage.length);
                     dataparams.msginfo = MessageInfo.array_ByteToData(MessageInfoPayLoad);
                 }
                 dataparams.ID_Peer = this.remote_PeerID;

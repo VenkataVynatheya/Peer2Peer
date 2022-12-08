@@ -409,7 +409,7 @@ public class Peer2Peer {
         } catch (Exception exception) {
             logger.logDisplay(String.format("Error : " + exception.getMessage() + " from Peer ID: " + ID_peer));
         } finally {
-            logger.logDisplay(String.format("Completed! Peer ID " + ID_peer + " is terminating."));
+            logger.logDisplay(String.format("Completed! Peer ID " + ID_peer + " is terminating now."));
             logger.logExit();
             System.exit(0);
         }
