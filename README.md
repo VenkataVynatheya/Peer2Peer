@@ -7,13 +7,13 @@ This peer-to-peer file-sharing program uses TCP protocol connections and operate
 In this project, we have a collection of independent computers acting as a distributed repository of files, with each machine holding a portion of the file we want to transfer.
 
 # Team Members: 
-1. Surya Teja Paduri
+1. Surya Teja Paduri  
    Contributed in making TCP connections between the peers.
    Worked on establishing Handshake protocol.
-2. Venkata Vynatheya
+2. Venkata Vynatheya  
    Worked on initiating the File Exchange protocol.
    Contributed in choking and unchoking mechanisms of the peers.
-3. Lalith Phani Srinivas Kandregula
+3. Lalith Phani Srinivas Kandregula   
    Worked on communication between the peers whilst the data exchange.
    Also logging the messages during the file exchange process.
 
