@@ -3,17 +3,17 @@ import java.net.Socket;
 import java.util.*;
 
 public class DataController implements Runnable {
-    private static String pId = null;
-    RandomAccessFile rf;
+    private static String ID_Peer = null;
+    RandomAccessFile randomAccessFile;
 
-    public DataController(String pId) {
-        DataController.pId = pId;
+    public DataController(String ID_Peer) {
+        DataController.ID_Peer = ID_Peer;
     }
 
     public void run() {
-        MessageInfo m;
-        DataParameters dp;
         String dataType;
+        DataParameters dp;
+        MessageInfo msg;
         String currentID_peer;
 
         while (true) {
@@ -22,20 +22,20 @@ public class DataController implements Runnable {
                 Thread.currentThread();
                 try {
                     Thread.sleep(500);
-                } catch (Exception ex) {
-                    ex.printStackTrace();
+                } catch (Exception exn) {
+                    exn.printStackTrace();
                 }
                 dp = Peer2Peer.deleteQueueData();
             }
 
-            m = dp.getMessage();
+            msg = dp.getMessage();
 
-            dataType = m.fetchdata_Type();
+            dataType = msg.fetchdata_Type();
             currentID_peer = dp.getpeerID();
             int position = Peer2Peer.hm_peerData.get(currentID_peer).position;
             if (dataType.equals("" + Constants.have) && position != 14) {
-                Peer2Peer.logger.logDisplay(Peer2Peer.ID_peer + " got HAVE message from Peer " + currentID_peer);
-                if (dividePayLoadData(currentID_peer, m)) {
+                Peer2Peer.logger.logDisplay(Peer2Peer.ID_peer + " Peer sent HAVE msg to peer " + currentID_peer);
+                if (dividePayLoadData(currentID_peer, msg)) {
                     sendInterestedMessage(currentID_peer, Peer2Peer.pD.get(currentID_peer));
                     Peer2Peer.hm_peerData.get(currentID_peer).position = 9;
                 } else {
@@ -48,7 +48,7 @@ public class DataController implements Runnable {
                         if (dataType.equals("" + Constants.bitField)) {
                             Peer2Peer.logger
                                     .logDisplay(
-                                            Peer2Peer.ID_peer + " got BITFIELD message from Peer " + currentID_peer);
+                                            Peer2Peer.ID_peer + " Peer sent PIECE " + currentID_peer);
                             sendBitFieldMessage(currentID_peer, Peer2Peer.pD.get(currentID_peer));
                             Peer2Peer.hm_peerData.get(currentID_peer).position = 3;
                         }
@@ -58,10 +58,11 @@ public class DataController implements Runnable {
 
                         if (dataType.equals("" + Constants.Interested)) {
                             Peer2Peer.logger
-                                    .logDisplay(Peer2Peer.ID_peer + " got a REQUEST message to Peer " + currentID_peer);
+                                    .logDisplay(
+                                            Peer2Peer.ID_peer + " received REQUEST message to Peer " + currentID_peer);
                             Peer2Peer.logger
                                     .logDisplay(
-                                            Peer2Peer.ID_peer + " got INTERESTED message from Peer " + currentID_peer);
+                                            Peer2Peer.ID_peer + " Peer sent INTERESTED to " + currentID_peer);
                             Peer2Peer.hm_peerData.get(currentID_peer).isInterested_Peer = 1;
                             Peer2Peer.hm_peerData.get(currentID_peer).isHandShake = 1;
 
@@ -77,7 +78,7 @@ public class DataController implements Runnable {
                             }
                         } else if (dataType.equals("" + Constants.notInterested)) {
                             Peer2Peer.logger.logDisplay(
-                                    Peer2Peer.ID_peer + " got NOT INTERESTED message from Peer " + currentID_peer);
+                                    Peer2Peer.ID_peer + " Peer sent NOT INTERESTED message to " + currentID_peer);
                             Peer2Peer.hm_peerData.get(currentID_peer).isInterested_Peer = 0;
                             Peer2Peer.hm_peerData.get(currentID_peer).position = 5;
                             Peer2Peer.hm_peerData.get(currentID_peer).isHandShake = 1;
@@ -86,7 +87,7 @@ public class DataController implements Runnable {
 
                     case 4:
                         if (dataType.equals("" + Constants.request)) {
-                            dataTransmission(Peer2Peer.pD.get(currentID_peer), m, currentID_peer);
+                            dataTransmission(Peer2Peer.pD.get(currentID_peer), msg, currentID_peer);
                             if (!Peer2Peer.prefNeighbours_HM.containsKey(currentID_peer)
                                     && !Peer2Peer.unchokedNeighbours_HM.containsKey(currentID_peer)) {
                                 sendChokeMessage(currentID_peer, Peer2Peer.pD.get(currentID_peer));
@@ -98,7 +99,7 @@ public class DataController implements Runnable {
 
                     case 8:
                         if (dataType.equals("" + Constants.bitField)) {
-                            if (dividePayLoadData(currentID_peer, m)) {
+                            if (dividePayLoadData(currentID_peer, msg)) {
                                 sendInterestedMessage(currentID_peer, Peer2Peer.pD.get(currentID_peer));
                                 Peer2Peer.hm_peerData.get(currentID_peer).position = 9;
                             } else {
@@ -138,13 +139,13 @@ public class DataController implements Runnable {
                         }
 
                         else if (dataType.equals("" + Constants.bit)) {
-                            byte[] payLoad_Array = m.array_getPayLoad();
+                            byte[] payLoad_Array = msg.array_getPayLoad();
                             Peer2Peer.hm_peerData.get(currentID_peer).time2 = new Date();
                             long d = Peer2Peer.hm_peerData.get(currentID_peer).time2.getTime()
                                     - Peer2Peer.hm_peerData.get(currentID_peer).time1.getTime();
                             Peer2Peer.hm_peerData
                                     .get(currentID_peer).rateOfStream = ((double) (payLoad_Array.length
-                                            + Constants.message_Size + Constants.message_Type) / (double) d) * 100;
+                                            + Constants.messageSize + Constants.messageType) / (double) d) * 100;
                             Payloadbit p = Payloadbit.convertTobit(payLoad_Array);
                             Peer2Peer.payLoadCurrent.refresh_payLoad(p, "" + currentID_peer);
                             int idx = Peer2Peer.payLoadCurrent.get_firstBitField(
@@ -186,7 +187,7 @@ public class DataController implements Runnable {
                             Peer2Peer.logger.logDisplay(Peer2Peer.ID_peer + " got UNCHOKED by Peer " + currentID_peer);
                             Peer2Peer.hm_peerData.get(currentID_peer).position = 14;
                         } else if (dataType.equals("" + Constants.have)) {
-                            if (dividePayLoadData(currentID_peer, m)) {
+                            if (dividePayLoadData(currentID_peer, msg)) {
                                 sendInterestedMessage(currentID_peer, Peer2Peer.pD.get(currentID_peer));
                                 Peer2Peer.hm_peerData.get(currentID_peer).position = 9;
                             } else {
@@ -203,17 +204,17 @@ public class DataController implements Runnable {
     }
 
     private void dataTransmission(Socket socket, MessageInfo requestMessage, String pId) {
+        File f = new File(Peer2Peer.ID_peer, Constants.fileDesc);
         byte[] bidx = requestMessage.array_getPayLoad();
         int pidx = Constants.byteToIntConverter(bidx, 0);
         byte[] byte_Read = new byte[Constants.sizeOfbit];
         int readBytes = 0;
-        File f = new File(Peer2Peer.ID_peer, Constants.fileDesc);
 
-        Peer2Peer.logger.logDisplay(Peer2Peer.ID_peer + " is sending bit " + pidx + " to Peer " + pId);
+        Peer2Peer.logger.logDisplay(Peer2Peer.ID_peer + " sending bit " + pidx + " to Peer " + pId);
         try {
-            rf = new RandomAccessFile(f, "r");
-            rf.seek((long) pidx * Constants.sizeOfbit);
-            readBytes = rf.read(byte_Read, 0, Constants.sizeOfbit);
+            randomAccessFile = new RandomAccessFile(f, "r");
+            randomAccessFile.seek((long) pidx * Constants.sizeOfbit);
+            readBytes = randomAccessFile.read(byte_Read, 0, Constants.sizeOfbit);
         } catch (Exception ex) {
             Peer2Peer.logger.logDisplay(Peer2Peer.ID_peer + " has error in reading the file: " + ex.toString());
         }
@@ -224,70 +225,73 @@ public class DataController implements Runnable {
 
         sendOutput(MessageInfo.array_DataToByte(new MessageInfo(Constants.bit, buffer_Bytes)), socket);
         try {
-            rf.close();
+            randomAccessFile.close();
         } catch (Exception ignored) {
         }
     }
 
     private void sendRequest(int pNo, Socket socket) {
-        byte[] p = new byte[Constants.maxbitLength];
-        for (int i = 0; i < Constants.maxbitLength; i++)
-            p[i] = 0;
+        byte[] bitArray = new byte[Constants.maxbitLength];
+        int i = 0;
+        while (i < Constants.maxbitLength) {
+            bitArray[i] = 0;
+            i++;
+        }
 
         byte[] pidxArray = Constants.intToByteConverter(pNo);
-        System.arraycopy(pidxArray, 0, p, 0,
+        System.arraycopy(pidxArray, 0, bitArray, 0,
                 pidxArray.length);
 
-        sendOutput(MessageInfo.array_DataToByte(new MessageInfo(Constants.request, p)), socket);
-    }
-
-    private void sendNotInterestedMessage(String pId, Socket socket) {
-        Peer2Peer.logger.logDisplay(Peer2Peer.ID_peer + " sent a NOT INTERESTED message to Peer " + pId);
-        sendOutput(MessageInfo.array_DataToByte(new MessageInfo(Constants.notInterested)), socket);
+        sendOutput(MessageInfo.array_DataToByte(new MessageInfo(Constants.request, bitArray)), socket);
     }
 
     private void sendInterestedMessage(String pId, Socket socket) {
-        Peer2Peer.logger.logDisplay(Peer2Peer.ID_peer + " sent a REQUEST message to Peer " + pId);
-        Peer2Peer.logger.logDisplay(Peer2Peer.ID_peer + " sent a INTERESTED message to Peer " + pId);
+        Peer2Peer.logger.logDisplay(Peer2Peer.ID_peer + " sent REQUEST message to Peer " + pId);
+        Peer2Peer.logger.logDisplay(Peer2Peer.ID_peer + " sent INTERESTED message to Peer " + pId);
         sendOutput(MessageInfo.array_DataToByte(new MessageInfo(Constants.Interested)), socket);
     }
 
-    private boolean dividePayLoadData(String pId, MessageInfo md) {
-        PayLoadData payloadData = PayLoadData.data_Decode(md.array_getPayLoad());
-        Peer2Peer.hm_peerData.get(pId).payloadData = payloadData;
-        return Peer2Peer.payLoadCurrent.dividePayLoadData(payloadData);
+    private void sendNotInterestedMessage(String pId, Socket socket) {
+        Peer2Peer.logger.logDisplay(Peer2Peer.ID_peer + " sent NOT INTERESTED message to Peer " + pId);
+        sendOutput(MessageInfo.array_DataToByte(new MessageInfo(Constants.notInterested)), socket);
     }
 
-    private void sendUnChokeMessage(String pId, Socket socket) {
-        Peer2Peer.logger.logDisplay(Peer2Peer.ID_peer + " sent a UNCHOKE message to Peer " + pId);
-        sendOutput(MessageInfo.array_DataToByte(new MessageInfo(Constants.unChoke)), socket);
+    private boolean dividePayLoadData(String pId, MessageInfo md) {
+        PayLoadData payload = PayLoadData.data_Decode(md.array_getPayLoad());
+        Peer2Peer.hm_peerData.get(pId).payloadData = payload;
+        return Peer2Peer.payLoadCurrent.dividePayLoadData(payload);
     }
 
     private void sendChokeMessage(String pId, Socket socket) {
-        Peer2Peer.logger.logDisplay(Peer2Peer.ID_peer + " sent a CHOKE message to Peer " + pId);
+        Peer2Peer.logger.logDisplay(Peer2Peer.ID_peer + " sent CHOKE message to Peer " + pId);
         sendOutput(MessageInfo.array_DataToByte(new MessageInfo(Constants.choke)), socket);
+    }
+
+    private void sendUnChokeMessage(String pId, Socket socket) {
+        Peer2Peer.logger.logDisplay(Peer2Peer.ID_peer + " sent UNCHOKE message to Peer " + pId);
+        sendOutput(MessageInfo.array_DataToByte(new MessageInfo(Constants.unChoke)), socket);
     }
 
     private void sendOutput(byte[] encodedBitField, Socket socket) {
         try {
             OutputStream op = socket.getOutputStream();
             op.write(encodedBitField);
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+        } catch (Exception exn) {
+            System.out.println(exn.getMessage());
             ;
         }
     }
 
-    private void sendHaveMessage(String pId, Socket socket) {
-        Peer2Peer.logger.logDisplay(Peer2Peer.ID_peer + " sent a HAVE message to Peer " + pId);
-        sendOutput(MessageInfo.array_DataToByte(
-                new MessageInfo(Constants.have, Peer2Peer.payLoadCurrent.data_Encode())), socket);
-    }
-
     private void sendBitFieldMessage(String pId, Socket socket) {
-        Peer2Peer.logger.logDisplay(Peer2Peer.ID_peer + " sent a BITFIELD message to Peer " + pId);
+        Peer2Peer.logger.logDisplay(Peer2Peer.ID_peer + " sent PIECE message to Peer " + pId);
         sendOutput(MessageInfo.array_DataToByte(
                 new MessageInfo(+Constants.bitField, Peer2Peer.payLoadCurrent.data_Encode())), socket);
+    }
+
+    private void sendHaveMessage(String pId, Socket socket) {
+        Peer2Peer.logger.logDisplay(Peer2Peer.ID_peer + " sent HAVE message to Peer ID: " + pId);
+        sendOutput(MessageInfo.array_DataToByte(
+                new MessageInfo(Constants.have, Peer2Peer.payLoadCurrent.data_Encode())), socket);
     }
 
 }

@@ -1,6 +1,11 @@
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.HashMap;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+
 
 public class Handshake extends Constants {
     public byte[] receive_HandShakeMsg() {
@@ -105,7 +110,7 @@ public class Handshake extends Constants {
                 throw new Exception("Please define valid Hand Shake Header");
             }
             if (handShakeHeaderByteArray.length > 18) {
-                throw new Exception(" Hand Shake Header length is greater than 18 bytes");
+                throw new Exception(" Hand Shake Header length exceeded 18 bytes");
             }
 
             for (int i = 0; i < handShakeHeaderByteArray.length; i++) {
@@ -127,7 +132,7 @@ public class Handshake extends Constants {
                 throw new Exception("Please define valid Zero bit padding");
             }
             if (zeroBitsByteArray.length > 10) {
-                throw new Exception("Zero bit padding length is greater than 10");
+                throw new Exception("Zero bit padding length exceeded 10(>10)");
             }
             for (int i = 0; i < zeroBitsByteArray.length; i++) {
                 this.handShakeMessage[k] = zeroBitsByteArray[i];
@@ -143,10 +148,10 @@ public class Handshake extends Constants {
     public void assignHandShakeMsgpeerId(byte[] peerIdByteArray) {
         try {
             if (peerIdByteArray == null) {
-                throw new Exception("Please define valid PeerId");
+                throw new Exception("Please provide valid PeerId");
             }
             if (peerIdByteArray.length > 4) {
-                throw new Exception("Zero bit padding length is greater than 10");
+                throw new Exception("Zero bit padding length exceeded 10(>10)");
             }
 
             for (int i = 0; i < peerIdByteArray.length; i++) {
@@ -164,30 +169,32 @@ public class Handshake extends Constants {
 
         byte[] message_Header;
         byte[] message_peerId;
-        Handshake h;
+        Handshake hs;
         if (b.length != Constants.handShakeMessageLength) {
-            Peer2Peer.logger.logDisplay("INVALID length of HandShake Message");
+            Peer2Peer.logger.logDisplay("INVALID HandShake Message length");
             System.exit(0);
         }
-        h = new Handshake();
-        message_Header = new byte[Constants.size_Header];
+        hs = new Handshake();
         message_peerId = new byte[Constants.size_PeerID];
-        System.arraycopy(b, 0, message_Header, 0, Constants.size_Header);
-        System.arraycopy(b, Constants.size_Header + Constants.size_ZeroBit, message_peerId, 0, Constants.size_PeerID);
-        h.assignHandShakeMsgHeader(message_Header);
-        h.assignHandShakeMsgpeerId(message_peerId);
-        return h;
+        message_Header = new byte[Constants.headerSize];
+        
+        System.arraycopy(b, 0, message_Header, 0, Constants.headerSize);
+        System.arraycopy(b, Constants.headerSize + Constants.size_ZeroBit, message_peerId, 0, Constants.size_PeerID);
+        
+        hs.assignHandShakeMsgHeader(message_Header);
+        hs.assignHandShakeMsgpeerId(message_peerId);
+        return hs;
     }
 
     public static byte[] hsk_toArray(Handshake handshake) {
-        byte[] m = new byte[Constants.handShakeMessageLength];
+        byte[] msg = new byte[Constants.handShakeMessageLength];
 
-        if (handshake.getHandShakeHeader().length() > Constants.size_Header || handshake.getHandShakeHeader() == null
+        if (handshake.getHandShakeHeader().length() > Constants.headerSize || handshake.getHandShakeHeader() == null
                 || handshake.getHandShakeHeader().length() == 0) {
-            Peer2Peer.logger.logDisplay("HandShake header not VALID");
+            Peer2Peer.logger.logDisplay("INVALID HandShake header ");
             System.exit(0);
         } else {
-            System.arraycopy(handshake.getHandShakeHeader().getBytes(StandardCharsets.UTF_8), 0, m, 0,
+            System.arraycopy(handshake.getHandShakeHeader().getBytes(StandardCharsets.UTF_8), 0, msg, 0,
                     handshake.getHandShakeHeader().length());
         }
         if (handshake.getZeroBits() == null || handshake.getZeroBits().isEmpty()
@@ -195,7 +202,7 @@ public class Handshake extends Constants {
             Peer2Peer.logger.logDisplay("INVALID Zero bits");
             System.exit(0);
         } else {
-            System.arraycopy(handshake.getZeroBits().getBytes(StandardCharsets.UTF_8), 0, m, Constants.size_Header,
+            System.arraycopy(handshake.getZeroBits().getBytes(StandardCharsets.UTF_8), 0, msg, Constants.headerSize,
                     Constants.size_ZeroBit);
 
         }
@@ -203,10 +210,10 @@ public class Handshake extends Constants {
             Peer2Peer.logger.logDisplay("INVALID Peer bits");
             System.exit(0);
         } else {
-            System.arraycopy(String.valueOf(handshake.getPeerId()).getBytes(StandardCharsets.UTF_8), 0, m,
-                    Constants.size_Header + Constants.size_ZeroBit, Constants.size_PeerID);
+            System.arraycopy(String.valueOf(handshake.getPeerId()).getBytes(StandardCharsets.UTF_8), 0, msg,
+                    Constants.headerSize + Constants.size_ZeroBit, Constants.size_PeerID);
         }
-        return m;
+        return msg;
     }
 
 }

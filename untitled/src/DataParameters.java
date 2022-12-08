@@ -1,10 +1,10 @@
 public class DataParameters {
-    public MessageInfo getMessage() {
-        return msginfo;
-    }
+    MessageInfo msginfo;
+    String ID_Peer;
 
-    public void setMessage(MessageInfo m) {
-        this.msginfo = m;
+    DataParameters() {
+        msginfo = new MessageInfo();
+        ID_Peer = null;
     }
 
     public String getpeerID() {
@@ -15,12 +15,11 @@ public class DataParameters {
         this.ID_Peer = ID_Peer;
     }
 
-    MessageInfo msginfo;
-    String ID_Peer;
-
-    DataParameters() {
-        msginfo = new MessageInfo();
-        ID_Peer = null;
+    public MessageInfo getMessage() {
+        return msginfo;
     }
 
+    public void setMessage(MessageInfo m) {
+        this.msginfo = m;
+    }
 }
